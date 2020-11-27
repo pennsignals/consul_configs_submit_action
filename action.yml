@@ -17,7 +17,7 @@ inputs:
     description: "Regex for files to submit"
     required: true    
   location:
-    description: "Search location for for config files. Defaults to GITHUB_WORKSPACE"
+    description: "Search location for config files. Defaults to GITHUB_WORKSPACE"
     default: "./"
     required: false
 

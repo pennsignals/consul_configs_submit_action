@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y \
     curl
 
-ADD ./src/entrypoint.sh /entrypoint.sh
-ADD submit_to_consul.sh /submit_to_consul.sh
+ADD entrypoint.sh /entrypoint.sh
+ADD ./src/submit_to_consul.sh /scripts/submit_to_consul.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
