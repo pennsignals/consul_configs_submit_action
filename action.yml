@@ -10,7 +10,7 @@ inputs:
     description: "The HTTP address for Consul"
     required: true
   path:
-    description: : "Path to submit files in Consul. Default to /"
+    description: "Path to submit files in Consul. Default to /"
     required: false
     default: "/"
   regex:
