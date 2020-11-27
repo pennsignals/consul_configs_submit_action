@@ -1,4 +1,4 @@
-FROM debian:10.6-slim
+FROM ubuntu:20.04
 
 RUN apt-get update && \
     apt-get install -y \
