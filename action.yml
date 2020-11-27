@@ -1,0 +1,30 @@
+# action.yml
+name: "Consul KV Submit"
+author: "Darryl Mendillo"
+description: "Submit all config file with matching regex to Consul"
+branding:
+  icon: "database"
+  color: "red"
+inputs:
+  addr:
+    description: "The HTTP address for Consul"
+    required: true
+  path:
+    description: : "Path to submit files in Consul. Default to /"
+    required: false
+    default: "/"
+  regex:
+    description: "Regex for files to submit"
+    required: true    
+  location:
+    description: "Search location for for config files. Defaults to GITHUB_WORKSPACE"
+    default: "./"
+    required: false
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.addr }}
+    - ${{ inputs.regex }}
+    - ${{ inputs.location }}
