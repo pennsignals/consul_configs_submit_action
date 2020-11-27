@@ -26,5 +26,6 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.addr }}
+    - ${{ inputs.path }}
     - ${{ inputs.regex }}
     - ${{ inputs.location }}
