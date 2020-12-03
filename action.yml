@@ -10,17 +10,20 @@ inputs:
     description: "The HTTP address for Consul"
     required: true
   path:
-    description: "Path to submit files in Consul. Format: path/to/key Default to \"\"."
+    description: "Path to submit files in Consul. Do not include deploy environment (staging/production). Format: path/to/key Default to \"\"."
     required: false
     default: ""
   regex:
     description: "Regex for files to submit"
     required: true    
-  location:
-    description: "Search location for config files. Defaults to GITHUB_WORKSPACE"
+  locations:
+    description: "Search locations for config files. Defaults to GITHUB_WORKSPACE"
     default: "./"
     required: false
-
+  deploy:
+      description: "Deployment environent. Submits only configs matching environment, and renames them. Example (staging.yaml -> config.yaml) Defaults to staging"
+      default: "staging"
+      required: false
 runs:
   using: "docker"
   image: "Dockerfile"

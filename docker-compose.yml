@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+  submit:
+    build:
+      context: .
+    environment:
+    - INPUT_ADDR=http://10.146.0.5:8500/v1/kv
+    - INPUT_PATH=pennsignals/
+    - INPUT_REGEX=""
+    - INPUT_LOCATION=./epic/local
+    - INPUT_DEPLOY=staging
+    restart: always
+    stdin_open: true # docker run -i
+    stop_signal: SIGTERM
+    tty: true        # docker run -t
