@@ -16,7 +16,7 @@ for INPUT_LOCATION in $(echo $INPUT_LOCATIONS | sed "s/,/ /g"); do
     CONFIG_FILES=$(find "${INPUT_LOCATION}" -type f -regextype posix-extended -regex "${INPUT_REGEX}")
 
     # submit all found config files to consul
-    echo "/scripts/submit_to_consul.sh --path ${INPUT_PATH} --address ${INPUT_ADDR} --deploy ${INPUT_DEPLOY} ${CONFIG_FILES}"
-    /scripts/submit_to_consul.sh --path "${INPUT_PATH}" --address "${INPUT_ADDR}" --deploy "${INPUT_DEPLOY}" "${CONFIG_FILES}"
+    echo "/scripts/submit_to_consul.sh --path ${INPUT_PATH} --address ${INPUT_ADDR} --deploy ${INPUT_DEPLOY} --service "${INPUT_SERVICE}" ${CONFIG_FILES}"
+    /scripts/submit_to_consul.sh --path "${INPUT_PATH}" --address "${INPUT_ADDR}" --deploy "${INPUT_DEPLOY}" --service "${INPUT_SERVICE}" "${CONFIG_FILES}"
 
 done

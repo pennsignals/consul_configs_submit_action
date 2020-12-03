@@ -20,6 +20,9 @@ inputs:
     description: "Search locations for config files. Defaults to GITHUB_WORKSPACE"
     default: "./"
     required: false
+  service:
+    description: "Service name. Config files are stored in service"
+    required: true
   deploy:
       description: "Deployment environent. Submits only configs matching environment, and renames them. Example (staging.yaml -> config.yaml) Defaults to staging"
       default: "staging"
