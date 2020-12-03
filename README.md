@@ -11,7 +11,6 @@ Searches all subdirectories of `location` using `regex` expression. All matched 
       uses: pennsignals/consul_configs_submit_action@main
       with:
         addr: 'http://10.146.0.5:8500/v1/kv' # required
-        regex: '^.*.(yaml|yml|conf|json)$' # required
-        location: "./project/local" # optional (default = "./")
-        path: "organization/project/tag" # optional (default = "")
+        config: './deploy_config.yml' # required
+
 ```
