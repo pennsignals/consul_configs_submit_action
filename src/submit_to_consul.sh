@@ -9,7 +9,7 @@ put_config() {
     FILE="$5"
 
     # rename file based on DEPLOY (ex sample.staging.yml -> sample.config.yml)
-    FILE_NAME=$(echo ${FILE##*/} | sed 's/staging/config/')
+    FILE_NAME=$(echo ${FILE##*/} | sed 's/'"$DEPLOY"'/config/')
 
     # write config file at $CONSUL_PATH
     echo "curl -fX PUT -d @$FILE $ADDRESS/$CONSUL_PATH/$SERVICE/$FILE_NAME"
