@@ -41,13 +41,13 @@ get_all_configs() {
 
     echo
     local f
-    # check each file for regex (matching deploy env)
+
+    # send each config to put_config 
     echo "looking for *.$DEPLOY"
     for f; do
-        case "$f" in
-            *.${DEPLOY}.*) echo "$0: uploading $f"; put_config "$ADDRESS" "$CONSUL_PATH" "$DEPLOY" "$SERVICE" "$f"; echo ;;
-            *)      echo "$0: ignoring $f" ;;
-        esac
+        echo "$0: uploading $f"
+        put_config "$ADDRESS" "$CONSUL_PATH" "$DEPLOY" "$SERVICE" "$f"
+        
         echo
     done
 }
