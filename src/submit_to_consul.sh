@@ -12,8 +12,8 @@ put_config() {
     FILE_NAME=$(echo ${FILE##*/} | sed 's/'"$DEPLOY"'/config/')
 
     # write config file at $CONSUL_PATH
-    echo "curl -fX PUT -d @$FILE $ADDRESS/$CONSUL_PATH/$SERVICE/$FILE_NAME"
-    /usr/bin/curl -fX PUT -d @$FILE $ADDRESS/$CONSUL_PATH/$SERVICE/$FILE_NAME
+    echo "curl -fX PUT --data-binary @$FILE $ADDRESS/$CONSUL_PATH/$SERVICE/$FILE_NAME"
+    /usr/bin/curl -fX PUT --data-binary @$FILE $ADDRESS/$CONSUL_PATH/$SERVICE/$FILE_NAME
 
 }
 
