@@ -1,4 +1,5 @@
-FROM debian:10.6-slim
+FROM debian:10.6-slim as consul
+LABEL name=consul
 
 ARG VERSION="3.4.1"
 ARG BINARY="yq_linux_amd64"
