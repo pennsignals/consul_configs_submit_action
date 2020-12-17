@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # echo all the variabls
-echo "INPUT_ADDR: $INPUT_ADDR"
-echo "INPUT_CONFIG: $INPUT_CONFIG"
-
-DEPLOY_CONFIG="$INPUT_CONFIG"
+echo "CONSUL_ADDR: $CONSUL_ADDR"
+echo "DEPLOY_CONFIG: $DEPLOY_CONFIG"
 
 # parse DEPLOY_CONFIG file and build VAULT_PATH
 DEPLOY=$(yq read $DEPLOY_CONFIG 'deploy')
@@ -23,7 +21,7 @@ for SERVICE in $(echo $SERVICES | sed "s/,/ /g"); do
     CONFIG_FILES=$(find "${CONFIGS_PATH}" -type f -regextype posix-extended -regex "${REGEX}" -and -regex ".*.${DEPLOY}.*")
 
     # submit all found config files to consul
-    echo "/scripts/submit_to_consul.sh --path ${CONSUL_PATH} --address ${INPUT_ADDR} --deploy ${DEPLOY} --service "${SERVICE}" ${CONFIG_FILES}"
-    /scripts/submit_to_consul.sh --path "${CONSUL_PATH}" --address "${INPUT_ADDR}" --deploy "${DEPLOY}" --service "${SERVICE}" "${CONFIG_FILES}"
+    echo "/scripts/submit_to_consul.sh --path ${CONSUL_PATH} --address ${CONSUL_ADDR} --deploy ${DEPLOY} --service "${SERVICE}" ${CONFIG_FILES}"
+    /scripts/submit_to_consul.sh --path "${CONSUL_PATH}" --address "${CONSUL_ADDR}" --deploy "${DEPLOY}" --service "${SERVICE}" "${CONFIG_FILES}"
 
 done
