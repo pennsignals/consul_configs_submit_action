@@ -3,9 +3,14 @@
 # echo all the variabls
 echo "CONSUL_ADDR: $CONSUL_ADDR"
 echo "DEPLOY_CONFIG: $DEPLOY_CONFIG"
+echo "ENV: $ENV"
 
 # parse DEPLOY_CONFIG file and build VAULT_PATH
-DEPLOY=$(yq read $DEPLOY_CONFIG 'deploy')
+
+# Use input environment parameter if given
+CONFIG_ENV=$(yq read $DEPLOY_CONFIG 'deploy')
+DEPLOY="$ENV:-$CONFIG_ENV"
+
 CONSUL_PATH=$(yq read $DEPLOY_CONFIG 'organization')/$(yq read $DEPLOY_CONFIG 'project')
 SERVICES=$(yq read --printMode p $DEPLOY_CONFIG 'services.*.' | cut -f2 -d '.')
 REGEX=$(yq read $DEPLOY_CONFIG 'template.configs.regex')

@@ -12,5 +12,5 @@ Searches all subdirectories of `location` using `regex` expression. All matched 
       with:
         addr: 'http://10.146.0.5:8500/v1/kv' # required
         config: './deploy_config.yml' # required
-
+        env: 'staging'
 ```
