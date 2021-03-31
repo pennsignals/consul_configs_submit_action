@@ -21,6 +21,6 @@ for SERVICE in $(echo $SERVICES | sed "s/,/ /g"); do
     FILE_NAME=$(yq read $DEPLOY_CONFIG services.$SERVICE.configuration.name)
 
     # submit to consul
-    consul kv put $ORGANIZATION/$PROJECT/$SERVICE/$FILE_NAME $CONFIG_FILE
+    consul kv put $ORGANIZATION/$PROJECT/$SERVICE/$FILE_NAME @$CONFIG_FILE
 
 done

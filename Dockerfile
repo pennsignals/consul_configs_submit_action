@@ -17,14 +17,13 @@ RUN apt-get update && \
     unzip
 
 ADD entrypoint.sh /entrypoint.sh
-ADD ./src/submit_to_consul.sh /scripts/submit_to_consul.sh
 
-# install yq
+# download yq and consul
 RUN wget -qO /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_${BINARY} &&\
-    chmod +x /usr/bin/yq
+    wget -qO consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_${BINARY}.zip
 
-# install consul
-RUN wget -qO consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_${BINARY}.zip &&\
+# install yq and consul
+RUN chmod +x /usr/bin/yq &&\
     unzip consul.zip -d /usr/local/bin/
 
 ENTRYPOINT [ "/entrypoint.sh" ]

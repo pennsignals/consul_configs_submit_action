@@ -4,11 +4,11 @@ services:
 
   consul:
     build: .
-    entrypoint: /bin/bash
+    #entrypoint: /bin/bash
     environment:
       CONSUL_HTTP_ADDR: "http://10.145.240.242:8500"
       DEPLOY_CONFIG: "local/deploy_config.yml"
-      ENV: "staging"
+      ENV: "production"
     restart: always
     stdin_open: true # docker run -i
     stop_signal: SIGTERM
