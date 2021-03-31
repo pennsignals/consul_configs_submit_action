@@ -20,10 +20,10 @@ ADD entrypoint.sh /entrypoint.sh
 
 # download yq and consul
 RUN wget -qO /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_${BINARY} &&\
-    wget -qO consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_${BINARY}.zip
+    wget -qO /tmp/consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_${BINARY}.zip
 
 # install yq and consul
 RUN chmod +x /usr/bin/yq &&\
-    unzip consul.zip -d /usr/local/bin/
+    unzip /tmp/consul.zip -d /usr/local/bin/
 
 ENTRYPOINT [ "/entrypoint.sh" ]
