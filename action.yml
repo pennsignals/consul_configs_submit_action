@@ -15,11 +15,12 @@ inputs:
   env:
     description: "Deployment environment ot override deploy_config.yml. ex: staging, production"
     required: false
+    default: 'staging'
 
 runs:
   using: "docker"
   image: "Dockerfile"
   env:
-    CONSUL_ADDR: ${{ inputs.addr }}
+    CONSUL_HTTP_ADDR: ${{ inputs.addr }}
     DEPLOY_CONFIG: ${{ inputs.config }}
     ENV: ${{ inputs.env }}
