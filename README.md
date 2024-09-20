@@ -1,3 +1,9 @@
+# Archived
+
+Consider using consul kv put directrly from a self-hosted runner instead.
+
+---
+
 # Submit Consul Configurations
 
 A GitHub Action that finds all configuration files and uploads them to a Consul Server
